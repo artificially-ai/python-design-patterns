@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 
 .idea
+
+success.txt
+error.txt
