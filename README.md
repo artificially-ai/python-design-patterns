@@ -9,6 +9,24 @@ I hope the implementations are clear enough to be re-implemented in any other pr
 As a side note: this is still work in progress. I will start implementing the patterns I either like most or have used
 more often throughout my career.
 
+# Preparing the Environment
+
+The repository comes with a [Conda](https://docs.conda.io/en/latest/) environment file with the dependencies you need to
+run everything. If you don't have Conda installed please proceed to the link above and install it. Once it's installed,
+you can create the environment by simply typing the command below:
+
+```shell script
+conda env create -f environment.yml
+```
+
+Once the environment has been created, you can activate it by typing the command below:
+
+```shell script
+conda activate python-dp
+```
+
+Explanations about how to run the sample code can be found inside the dedicated packages.
+
 # Implementations
 
 ## Creational Design Patterns
@@ -17,7 +35,7 @@ more often throughout my career.
 * Builder
 * Factory
 * Prototype
-* Singleton
+* [Singleton](patterns/singleton/README.md)
 
 ## Structural Design Patterns
 
