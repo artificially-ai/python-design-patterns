@@ -1,9 +1,9 @@
-from patterns.command.action import Action
-
 from multiprocessing import Pool
+from random import randrange
 
 from absl import logging
 
+from patterns.command.action import Action
 from patterns.command.callback.handler import Callback
 
 
@@ -27,10 +27,18 @@ class SendMessageAction(Action):
 
     def perform(self):
         try:
-            logging.info('Will send the message in a different process.')
-            # Do something asynchronously.
-            self.pool.apply(self.callback.on_success, ['Message sent successfully.'])
+            logging.info('The message will be sent in a different process.')
 
-        except:
+            # Silly way to simulate an issue before the call is dispatched to the callback.
+            random_failure = randrange(0, 5)
+            logging.info(f'Random failure state: {random_failure}')
+            if random_failure:
+                logging.info('Random failure has been triggered.')
+                raise SystemError('Random failure has been triggered.')
+
+            # Do something asynchronously.
+            self.pool.apply(self.callback.on_success, ['The message was sent successfully.'])
+
+        except SystemError as e:
             # If something doesn't go okay, report an error.
-            self.pool.apply(self.callback.on_error, ['Error occurred when sending the message.'])
+            self.pool.apply(self.callback.on_error, [f'SystemError: {e}'])
