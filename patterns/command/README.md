@@ -38,3 +38,11 @@ design pattern, it's interesting enough on its own. have a look at the extended 
 
 I hope that this is enough to illustrate the use of the **Command** design pattern and also having it in combination with 
 Callbacks. 
+
+## Running the code
+
+Not much needs to be done to run the examples, from the repository root directory, execute the command below:
+
+```shell script
+python -m examples.command.tests.machine
+```

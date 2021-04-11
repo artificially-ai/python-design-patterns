@@ -34,10 +34,11 @@ class SendMessageAction(Action):
             logging.info(f'Random failure state: {random_failure}')
             if random_failure:
                 logging.info('Random failure has been triggered.')
-                raise SystemError('Random failure has been triggered.')
+                raise SystemError(f'Random failure has been triggered. Failure: {random_failure}')
 
             # Do something asynchronously.
-            self.pool.apply(self.callback.on_success, ['The message was sent successfully.'])
+            self.pool.apply(self.callback.on_success, [f'The message was sent successfully. '
+                                                       f'Success code: {random_failure}'])
 
         except SystemError as e:
             # If something doesn't go okay, report an error.
