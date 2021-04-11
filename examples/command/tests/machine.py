@@ -23,7 +23,7 @@ class Machine:
         self.send_message.execute()
 
 
-def main(argv):
+def main(arguments):
     machine = Machine()
     machine.on()
     machine.send()
