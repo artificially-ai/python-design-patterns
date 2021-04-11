@@ -25,7 +25,15 @@ An important aspect to keep in mind is thread safety. For instance, depending on
 is, there might be multiple threads calling the `getInstance()` method. Make sure, if it is required, to synchronise that
 access. 
 
-# Simple Logger
+# Implementation
+
+You can find the implementation of the Singleton design pattern under the [pattern.py](pattern.py) file. It contains two
+styles: defining it as a Python `type`, that can be used as a metaclass when being extended, and having a simple Singleton
+class implementation. The latter is an example and would require you to repeat it for every Singleton class you would
+need to create. The former uses a dictionary, as in a `Flyweight` fashion, to keep the references of instances already
+created. We will see more about the Flyweight design patter in another place. 
+
+## Simple Logger
 
 To have a better idea about the Singleton design pattern can be used, I implemented a ridiculously simple Logger system. :)
 
