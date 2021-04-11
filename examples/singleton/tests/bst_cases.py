@@ -3,6 +3,8 @@ from examples.singleton.tests.binary_tree import TreeNode
 
 from collections import deque
 
+from absl import app
+
 # Creating several of those. The logs should print the object and the stdout IDs as well.
 logger_1 = Logger()
 
@@ -49,14 +51,14 @@ def traverse_level_order(root, queue):
 
 
 def traverse_pre_order(root, queue):
-    logger_2.info('Traversing the tree, pre-order style: depth first.')
+    logger_1.info('Traversing the tree, pre-order style: depth first.')
     if root:
         queue.append(root.val)
         traverse_pre_order(root.left, queue)
         traverse_pre_order(root.right, queue)
 
 
-if __name__ == '__main__':
+def main(arguments):
     # Creating several of those. The logs should print the object and the stdout IDs as well.
     logger_2 = Logger()
 
@@ -72,7 +74,7 @@ if __name__ == '__main__':
     aux_queue = deque()
     traverse_pre_order(tree, aux_queue)
     for e in aux_queue:
-        logger_1.info(e)
+        logger_2.info(e)
 
     """
     Traverse the tree breadth first
@@ -83,3 +85,7 @@ if __name__ == '__main__':
     traverse_level_order(tree, aux_queue)
     for e in aux_queue:
         logger_4.info(e)
+
+
+if __name__ == '__main__':
+    app.run(main)
