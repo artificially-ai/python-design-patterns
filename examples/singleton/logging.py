@@ -8,7 +8,8 @@ from patterns.singleton.pattern import SingletonType
 class Logger(metaclass=SingletonType):
 
     def __init__(self):
-        self.console = sys.stderr
+        self.console = sys.stdout
+        self.error = sys.stderr
 
     def info(self, message):
         time = datetime.now()
@@ -18,9 +19,9 @@ class Logger(metaclass=SingletonType):
     def warn(self, message):
         time = datetime.now()
         self.console.writelines([f'[WARN] - {time} - Console ID {id(self.console)} - Logger ID {id(self)} - '
-                                f'Message: {message}'])
+                                f'Message: {message}\n'])
 
     def error(self, message):
         time = datetime.now()
-        self.console.writelines([f'[ERROR] - {time} - Console ID {id(self.console)} - Logger ID {id(self)} -'
-                                f'Message: {message}'])
+        self.error.writelines([f'[ERROR] - {time} - Console ID {id(self.console)} - Logger ID {id(self)} -'
+                                f'Message: {message}\n'])
