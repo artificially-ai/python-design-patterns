@@ -24,4 +24,4 @@ class Logger(metaclass=SingletonType):
     def error(self, message):
         time = datetime.now()
         self.error.writelines([f'[ERROR] - {time} - Console ID {id(self.console)} - Logger ID {id(self)} -'
-                                f'Message: {message}\n'])
+                               f'Message: {message}\n'])
