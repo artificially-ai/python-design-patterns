@@ -29,7 +29,7 @@ def tree_height(node):
             return right_height + 1
 
 
-def level_order(root, queue):
+def traverse_level_order(root, queue):
     # Creating several of those. The logs should print the object and the stdout IDs as well.
     logger_3 = Logger()
     logger_3.info('Traversing the tree, level-order style: breadth first.')
@@ -48,12 +48,12 @@ def level_order(root, queue):
         queue.append(curr_node.val)
 
 
-def traverse_preorder(root, queue):
+def traverse_pre_order(root, queue):
     logger_2.info('Traversing the tree, pre-order style: depth first.')
     if root:
         queue.append(root.val)
-        traverse_preorder(root.left, queue)
-        traverse_preorder(root.right, queue)
+        traverse_pre_order(root.left, queue)
+        traverse_pre_order(root.right, queue)
 
 
 if __name__ == '__main__':
@@ -63,14 +63,14 @@ if __name__ == '__main__':
     """
     Create a binary tree.
     """
-    flat_tree = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    flat_tree = range(1, 11, 1)
     tree = create_inorder(flat_tree, None, 0, len(flat_tree))
 
     """
     Traverse the tree depth first
     """
     aux_queue = deque()
-    traverse_preorder(tree, aux_queue)
+    traverse_pre_order(tree, aux_queue)
     for e in aux_queue:
         logger_1.info(e)
 
@@ -80,6 +80,6 @@ if __name__ == '__main__':
     # Creating several of those. The logs should print the object and the stdout IDs as well.
     logger_4 = Logger()
     aux_queue = deque()
-    level_order(tree, aux_queue)
+    traverse_level_order(tree, aux_queue)
     for e in aux_queue:
         logger_4.info(e)
